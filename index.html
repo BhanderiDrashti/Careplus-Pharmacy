@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarePlus Pharmacy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        background:
+            radial-gradient(circle at 10% 20%,
+            rgba(8, 127, 140, 0.10) 0%,
+            transparent 25%),
+            radial-gradient(circle at 90% 30%,
+            rgba(13, 168, 181, 0.10) 0%,
+            transparent 25%),
+            radial-gradient(circle at 50% 90%,
+            rgba(8, 127, 140, 0.08) 0%,
+            transparent 30%),
+            linear-gradient(
+                135deg,
+                #eefafb,
+                #ffffff,
+                #e7f7f9
+            );
+        background-attachment: fixed;
+    }
+    section {
+        padding: 70px 0;
+    }
+    .section-title {
+        text-align: center;
+        margin-bottom: 45px;
+    }
+    .section-title h2 {
+        color: #087f8c;
+        font-weight: bold;
+        font-size: 32px;
+    }
+    .section-title p {
+        color: #666;
+    }
+    .navbar {
+        background-color: rgba(255,255,255,0.96);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        padding: 15px 0;
+        backdrop-filter: blur(8px);
+    }
+    .navbar-brand {
+        font-size: 25px;
+        font-weight: bold;
+        color: #087f8c !important;
+    }
+    .navbar-brand i {
+        margin-right: 8px;
+    }
+    .nav-link {
+        color: #333 !important;
+        font-weight: 500;
+        margin-left: 15px;
+    }
+    .nav-link:hover {
+        color: #087f8c !important;
+    }
+    #home {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+    background:
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(8, 127, 140, 0.25) 0px,
+            rgba(8, 127, 140, 0.10) 120px,
+            transparent 260px
+        ),
+        radial-gradient(
+            circle at 10% 80%,
+            rgba(13, 168, 181, 0.18) 0px,
+            transparent 280px
+        ),
+        linear-gradient(
+            135deg,
+            #d9f5f7 0%,
+            #f8ffff 45%,
+            #cceff2 100%
+        );
+    position: relative;
+    overflow: hidden;
+}
+    .home-content h1 {
+        font-size: 50px;
+        font-weight: bold;
+        color: #075e68;
+    }
+    .home-content h1 span {
+        color: #0a9aa8;
+    }
+    .home-content p {
+        font-size: 18px;
+        color: #555;
+        margin: 20px 0;
+        line-height: 1.7;
+    }
+    .btn-main {
+        background-color: #087f8c;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 25px;
+        text-decoration: none;
+        display: inline-block;
+        transition: 0.3s;
+    }
+    .btn-main:hover {
+        background-color: #075e68;
+        color: white;
+        transform: translateY(-2px);
+    }
+    .home-icon {
+        text-align: center;
+        font-size: 190px;
+        color: #0a9aa8;
+    }
+    #about {
+        background: transparent;
+    }
+    .about-box {
+        background: rgba(255,255,255,0.93);
+        padding: 35px;
+        border-radius: 18px;
+        box-shadow: 0 8px 25px rgba(8,127,140,0.10);
+        border: 1px solid rgba(8,127,140,0.08);
+    }
+    .about-box h3 {
+        color: #087f8c;
+        margin-bottom: 15px;
+    }
+    .about-box p {
+        line-height: 1.8;
+        color: #555;
+    }
+    .about-list {
+        list-style: none;
+        padding: 0;
+    }
+    .about-list li {
+        margin: 12px 0;
+    }
+    .about-list i {
+        color: #087f8c;
+        margin-right: 10px;
+    }
+    #categories {
+        background: rgba(255,255,255,0.45);
+    }
+    .category-card {
+        background: rgba(255,255,255,0.95);
+        text-align: center;
+        padding: 30px 15px;
+        border-radius: 18px;
+        box-shadow: 0 8px 22px rgba(8,127,140,0.10);
+        transition: 0.3s;
+        height: 100%;
+        border: 1px solid rgba(8,127,140,0.08);
+    }
+    .category-card:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 12px 28px rgba(8,127,140,0.16);
+    }
+    .category-card i {
+        font-size: 45px;
+        color: #087f8c;
+        margin-bottom: 15px;
+    }
+    .category-card h5 {
+        font-weight: bold;
+    }
+    #medicines {
+        background: transparent;
+    }
+    .medicine-card {
+        border: none;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 8px 22px rgba(8,127,140,0.10);
+        transition: 0.3s;
+        height: 100%;
+    }
+    .medicine-card:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 12px 28px rgba(8,127,140,0.16);
+    }
+    .medicine-icon {
+        height: 150px;
+        background: linear-gradient(
+            135deg,
+            #e5f8fa,
+            #d7f2f5
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 70px;
+        color: #087f8c;
+    }
+    .medicine-card .card-body {
+        padding: 25px;
+    }
+    .medicine-card h5 {
+        color: #075e68;
+        font-weight: bold;
+    }
+    .price {
+        color: #087f8c;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .badge-available {
+        background-color: #d1f3df;
+        color: #18733a;
+        padding: 7px 12px;
+        border-radius: 15px;
+    }
+    .medicine-category-link {
+        text-decoration: none;
+        color: inherit;
+    }
+    .medicine-category-card {
+        background: rgba(255,255,255,0.95);
+        padding: 35px 20px;
+        text-align: center;
+        border-radius: 20px;
+        box-shadow:
+            0 8px 25px rgba(8,127,140,0.10);
+        height: 100%;
+        transition: 0.3s;
+        border: 1px solid rgba(8,127,140,0.08);
+    }
+    .medicine-category-card:hover {
+        transform: translateY(-8px);
+        box-shadow:
+            0 14px 30px rgba(8,127,140,0.18);
+    }
+    .category-icon {
+        width: 80px;
+        height: 80px;
+        margin: auto;
+        background:
+            linear-gradient(
+                135deg,
+                #e5f8fa,
+                #d4f1f4
+            );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .category-icon i {
+        font-size: 40px;
+        color: #087f8c;
+    }
+    .medicine-category-card h4 {
+        margin-top: 20px;
+        color: #075e68;
+        font-weight: bold;
+    }
+    .medicine-category-card p {
+        color: #666;
+    }
+    .view-btn {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 16px;
+        background-color: #087f8c;
+        color: white;
+        border-radius: 20px;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+    .view-btn:hover {
+        background-color: #075e68;
+    }
+    .view-btn i {
+        margin-left: 5px;
+    }
+    .offer-card {
+        border: none;
+        border-radius: 18px;
+        padding: 30px;
+        color: white;
+        height: 100%;
+        box-shadow:
+            0 8px 22px rgba(0,0,0,0.12);
+        transition: 0.3s;
+    }
+    .offer-card:hover {
+        transform: translateY(-7px);
+    }
+    .offer-card h3 {
+        font-weight: bold;
+    }
+    .offer-card p {
+        line-height: 1.7;
+    }
+    .offer-one {
+        background: linear-gradient(
+            135deg,
+            #087f8c,
+            #0da8b5
+        );
+    }
+    .offer-two {
+        background: linear-gradient(
+            135deg,
+            #176b87,
+            #3199b7
+        );
+    }
+    .offer-three {
+        background: linear-gradient(
+            135deg,
+            #438a70,
+            #5eae8e
+        );
+    }
+    .offer-icon {
+        font-size: 45px;
+        margin-bottom: 15px;
+    }
+    #health-tips {
+        background: rgba(255,255,255,0.45);
+    }
+    .tip-card {
+        background: rgba(255,255,255,0.95);
+        padding: 30px 20px;
+        text-align: center;
+        border-radius: 18px;
+        box-shadow:
+            0 8px 22px rgba(8,127,140,0.10);
+        height: 100%;
+        transition: 0.3s;
+    }
+    .tip-card:hover {
+        transform: translateY(-7px);
+        box-shadow:
+            0 12px 28px rgba(8,127,140,0.16);
+    }
+    .tip-card i {
+        font-size: 58px;
+        color: #087f8c;
+        margin-bottom: 18px;
+        display: block;
+    }
+    .tip-card h5 {
+        font-weight: bold;
+        color: #075e68;
+        margin-bottom: 10px;
+    }
+    .tip-card p {
+        color: #666;
+        line-height: 1.6;
+    }
+    #services {
+        background: rgba(255,255,255,0.45);
+    }
+    .service-card {
+        background: rgba(255,255,255,0.95);
+        padding: 30px 20px;
+        text-align: center;
+        border-radius: 18px;
+        box-shadow:
+            0 8px 22px rgba(8,127,140,0.10);
+        height: 100%;
+        transition: 0.3s;
+    }
+    .service-card:hover {
+        transform: translateY(-7px);
+        box-shadow:
+            0 12px 28px rgba(8,127,140,0.16);
+    }
+    .service-card i {
+        font-size: 45px;
+        color: #087f8c;
+        margin-bottom: 18px;
+    }
+    .service-card h5 {
+        font-weight: bold;
+        color: #075e68;
+    }
+    .service-card p {
+        color: #666;
+        line-height: 1.6;
+    }
+    #contact {
+        background:
+            linear-gradient(
+                135deg,
+                rgba(234,247,249,0.95),
+                rgba(255,255,255,0.90)
+            );
+    }
+    .contact-card {
+        background: rgba(255,255,255,0.95);
+        padding: 30px;
+        border-radius: 18px;
+        height: 100%;
+        box-shadow:
+            0 8px 22px rgba(8,127,140,0.10);
+    }
+    .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+    .contact-item i {
+        font-size: 30px;
+        color: #087f8c;
+        margin-right: 18px;
+    }
+    .contact-item h6 {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .contact-item p {
+        margin: 0;
+        color: #666;
+    }
+    .map-box {
+        background:
+            linear-gradient(
+                135deg,
+                #d9f0f3,
+                #ccebed
+            );
+        height: 100%;
+        min-height: 300px;
+        border-radius: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #087f8c;
+        box-shadow:
+            0 8px 22px rgba(8,127,140,0.10);
+    }
+    .map-box i {
+        font-size: 70px;
+    }
+    footer {
+        background-color: #075e68;
+        color: white;
+        text-align: center;
+        padding: 25px 0;
+    }
+    footer p {
+        margin: 0;
+    }
+    footer .social-icons {
+        margin-top: 12px;
+    }
+    footer .social-icons i {
+        font-size: 22px;
+        margin: 0 8px;
+    }
+    #statistics {
+        background: transparent;
+    }
+    .stat-card {
+        background: rgba(255,255,255,0.95);
+        padding: 30px 20px;
+        text-align: center;
+        border-radius: 18px;
+        box-shadow: 0 8px 22px rgba(8,127,140,0.10);
+        border: 1px solid rgba(8,127,140,0.08);
+        height: 100%;
+        transition: 0.3s;
+    }
+    .stat-card:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 12px 28px rgba(8,127,140,0.16);
+    }
+    .stat-card i {
+        font-size: 42px;
+        color: #087f8c;
+        margin-bottom: 12px;
+    }
+    .stat-card h3 {
+        color: #075e68;
+        font-size: 32px;
+        font-weight: bold;
+        margin: 5px 0;
+    }
+    .stat-card p {
+        color: #666;
+        margin: 0;
+    }
+    .theme-toggle {
+        border: none;
+        background: transparent;
+        color: #087f8c;
+        font-size: 20px;
+        margin-left: 18px;
+        padding: 5px 8px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .theme-toggle:hover {
+        color: #075e68;
+        transform: rotate(15deg);
+    }
+    .navbar-toggler {
+        border: 1px solid rgba(8,127,140,0.35);
+    }
+    .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.15rem rgba(8,127,140,0.15);
+    }
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23087f8c' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    .back-to-top {
+        position: fixed;
+        right: 25px;
+        bottom: 25px;
+        width: 45px;
+        height: 45px;
+        border: none;
+        border-radius: 50%;
+        background: #087f8c;
+        color: white;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        cursor: pointer;
+        z-index: 999;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.18);
+        transition: 0.3s;
+    }
+    .back-to-top:hover {
+        background: #075e68;
+        transform: translateY(-3px);
+    }
+    body.dark-mode {
+        color: #e8f1f2;
+        background:
+            radial-gradient(circle at 10% 20%, rgba(8,127,140,0.18), transparent 25%),
+            radial-gradient(circle at 90% 30%, rgba(13,168,181,0.15), transparent 25%),
+            linear-gradient(135deg, #102326, #172f33, #102326);
+    }
+    body.dark-mode .navbar {
+        background-color: rgba(18,38,41,0.97);
+    }
+    body.dark-mode .navbar-brand,
+    body.dark-mode .nav-link {
+        color: #e8f1f2 !important;
+    }
+    body.dark-mode .nav-link:hover,
+    body.dark-mode .navbar-brand {
+        color: #4fd1dc !important;
+    }
+    body.dark-mode .section-title h2,
+    body.dark-mode .about-box h3,
+    body.dark-mode .medicine-category-card h4,
+    body.dark-mode .tip-card h5,
+    body.dark-mode .service-card h5,
+    body.dark-mode .medicine-card h5,
+    body.dark-mode .stat-card h3 {
+        color: #4fd1dc;
+    }
+    body.dark-mode .section-title p,
+    body.dark-mode .about-box p,
+    body.dark-mode .category-card p,
+    body.dark-mode .medicine-category-card p,
+    body.dark-mode .tip-card p,
+    body.dark-mode .service-card p,
+    body.dark-mode .stat-card p,
+    body.dark-mode .contact-item p {
+        color: #c5d4d6;
+    }
+    body.dark-mode #home {
+        background:
+            radial-gradient(circle at 85% 25%, rgba(8,127,140,0.30), transparent 260px),
+            radial-gradient(circle at 10% 80%, rgba(13,168,181,0.20), transparent 280px),
+            linear-gradient(135deg, #12373c, #183f43, #102d31);
+    }
+    body.dark-mode .home-content h1 {
+        color: #e8f1f2;
+    }
+    body.dark-mode .home-content h1 span {
+        color: #4fd1dc;
+    }
+    body.dark-mode .home-content p {
+        color: #c5d4d6;
+    }
+    body.dark-mode .about-box,
+    body.dark-mode .category-card,
+    body.dark-mode .medicine-category-card,
+    body.dark-mode .tip-card,
+    body.dark-mode .service-card,
+    body.dark-mode .contact-card,
+    body.dark-mode .stat-card {
+        background: rgba(24,47,51,0.96);
+        border-color: rgba(79,209,220,0.12);
+    }
+    body.dark-mode #categories,
+    body.dark-mode #health-tips,
+    body.dark-mode #services {
+        background: rgba(16,35,38,0.35);
+    }
+    body.dark-mode .medicine-icon,
+    body.dark-mode .category-icon {
+        background: linear-gradient(135deg, #1d454a, #23545a);
+    }
+    body.dark-mode #contact {
+        background: linear-gradient(135deg, rgba(20,46,50,0.96), rgba(18,38,41,0.95));
+    }
+    body.dark-mode .map-box {
+        background: linear-gradient(135deg, #1d454a, #23545a);
+        color: #4fd1dc;
+    }
+    body.dark-mode .theme-toggle {
+        color: #ffd166;
+    }
+    body.dark-mode .navbar-toggler {
+        border-color: rgba(79,209,220,0.35);
+    }
+    body.dark-mode .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%234fd1dc' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    body.dark-mode .about-list i,
+    body.dark-mode .category-card i,
+    body.dark-mode .category-icon i,
+    body.dark-mode .tip-card i,
+    body.dark-mode .service-card i,
+    body.dark-mode .contact-item i,
+    body.dark-mode .medicine-icon,
+    body.dark-mode .stat-card i {
+        color: #4fd1dc;
+    }
+    @media (max-width: 768px) {
+        section {
+            padding: 55px 0;
+        }
+        .home-content {
+            text-align: center;
+        }
+        .home-content h1 {
+            font-size: 38px;
+        }
+        .home-content p {
+            font-size: 16px;
+        }
+        .home-icon {
+            font-size: 120px;
+            margin-top: 30px;
+        }
+        .nav-link {
+            margin-left: 0;
+            padding: 10px 0;
+        }
+        .theme-toggle {
+            margin-left: 0;
+            margin-top: 8px;
+        }
+        .back-to-top {
+            right: 15px;
+            bottom: 15px;
+        }
+    }
+    @media (max-width: 768px) {
+        .home-content {
+            text-align: center;
+        }
+        .home-content h1 {
+            font-size: 38px;
+        }
+        .home-icon {
+            font-size: 120px;
+            margin-top: 30px;
+        }
+        .nav-link {
+            margin-left: 0;
+        }
+    }
+    footer .social-icons a {
+        color: white;
+        text-decoration: none;
+        display: inline-block;
+        transition: 0.3s;
+    }
+    footer .social-icons a:hover {
+        color: #8ee7ed;
+        transform: translateY(-2px);
+    }
+</style>
+<body>
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#home">
+            <i class="bi bi-capsule"></i>
+            CarePlus Pharmacy
+        </a>
+        <button class="navbar-toggler"
+                 aria-label="Open navigation menu"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#categories">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#medicines">Medicines</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#offers">Offers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="admin.html">Admin</a>
+                </li>
+            <button id="themeToggle" class="theme-toggle" type="button"
+                    aria-label="Toggle dark mode" title="Toggle dark/light mode">
+                <i class="bi bi-moon-fill"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+<section id="home">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-7 home-content">
+                <h1>
+                    Your Health,
+                    <span>Our Priority</span>
+                </h1>
+                <p>
+                    Welcome to CarePlus Pharmacy, your trusted destination
+                    for quality medicines, healthcare products and wellness
+                    services.
+                </p>
+                <a href="#medicines" class="btn-main">
+                    Explore Medicines
+                </a>
+            </div>
+            <div class="col-md-5">
+                <div class="home-icon">
+                    <i class="bi bi-capsule"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="about">
+    <div class="container">
+        <div class="section-title">
+            <h2>About Our Pharmacy</h2>
+            <p>
+                Learn more about CarePlus Pharmacy
+            </p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="about-box">
+                    <h3>Who We Are</h3>
+                    <p>
+                        CarePlus Pharmacy is a modern pharmacy dedicated
+                        to providing quality medicines and healthcare
+                        products. Our goal is to make healthcare products
+                        easily accessible while maintaining quality and
+                        reliability.
+                    </p>
+                    <p>
+                        We provide a wide range of medicines, wellness
+                        products and pharmacy services for everyday
+                        healthcare needs.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="about-box">
+                    <h3>Why Choose Us?</h3>
+                    <ul class="about-list">
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Quality healthcare products
+                        </li>
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Wide range of medicines
+                        </li>
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Affordable prices
+                        </li>
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Trusted pharmacy services
+                        </li>
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Customer-friendly environment
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="categories">
+    <div class="container">
+        <div class="section-title">
+            <h2>Medicine Categories</h2>
+            <p>
+                Explore our different medicine categories
+            </p>
+        </div>
+        <div class="row g-4">
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="category-card">
+                    <i class="bi bi-capsule"></i>
+                    <h5>Tablets</h5>
+                    <p>
+                        Common tablet medicines
+                    </p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="category-card">
+                    <i class="bi bi-capsule-pill"></i>
+                    <h5>Capsules</h5>
+                    <p>
+                        Various capsule medicines
+                    </p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="category-card">
+                    <i class="bi bi-droplet-half"></i>
+                    <h5>Syrups</h5>
+                    <p>
+                        Liquid medicines and syrups
+                    </p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="category-card">
+                    <i class="bi bi-bandaid"></i>
+                    <h5>Creams</h5>
+                    <p>
+                        Healthcare creams
+                    </p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="category-card">
+                    <i class="bi bi-heart-pulse"></i>
+                    <h5>Vitamins</h5>
+                    <p>
+                        Vitamin and wellness products
+                    </p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="category-card">
+                    <i class="bi bi-prescription2"></i>
+                    <h5>Injections</h5>
+                    <p>
+                        Injection medicines
+                    </p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="category-card">
+                    <i class="bi bi-person-hearts"></i>
+                    <h5>Personal Care</h5>
+                    <p>
+                        Personal healthcare products
+                    </p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="category-card">
+                    <i class="bi bi-shield-plus"></i>
+                    <h5>First Aid</h5>
+                    <p>
+                        Basic first-aid products
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="statistics">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Pharmacy at a Glance</h2>
+            <p>Quick facts about CarePlus Pharmacy</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-6 col-lg-3">
+                <div class="stat-card">
+                    <i class="bi bi-capsule"></i>
+                    <h3>500+</h3>
+                    <p>Medicines</p>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="stat-card">
+                    <i class="bi bi-building"></i>
+                    <h3>50+</h3>
+                    <p>Trusted Brands</p>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="stat-card">
+                    <i class="bi bi-grid"></i>
+                    <h3>20+</h3>
+                    <p>Categories</p>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="stat-card">
+                    <i class="bi bi-clock-history"></i>
+                    <h3>12 Hrs</h3>
+                    <p>Daily Service</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="medicines">
+    <div class="container">
+        <div class="section-title">
+            <h2>Medicines</h2>
+            <p>Select a medicine category to view available medicines</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <a href="medicines.html#paracetamol" class="medicine-category-link">
+                    <div class="medicine-category-card">
+                        <div class="category-icon"><i class="bi bi-capsule"></i></div>
+                        <h4>Paracetamol</h4>
+                        <p>View all Paracetamol medicines</p>
+                        <span class="view-btn">View Medicines <i class="bi bi-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <a href="medicines.html#vitamins" class="medicine-category-link">
+                    <div class="medicine-category-card">
+                        <div class="category-icon"><i class="bi bi-heart-pulse"></i></div>
+                        <h4>Vitamins</h4>
+                        <p>View all Vitamin medicines</p>
+                        <span class="view-btn">View Medicines <i class="bi bi-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <a href="medicines.html#injections" class="medicine-category-link">
+                    <div class="medicine-category-card">
+                        <div class="category-icon"><i class="bi bi-prescription2"></i></div>
+                        <h4>Injections</h4>
+                        <p>View all Injection medicines</p>
+                        <span class="view-btn">View Medicines <i class="bi bi-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <a href="medicines.html#creams" class="medicine-category-link">
+                    <div class="medicine-category-card">
+                        <div class="category-icon"><i class="bi bi-bandaid"></i></div>
+                        <h4>Creams</h4>
+                        <p>View all Cream medicines</p>
+                        <span class="view-btn">View Medicines <i class="bi bi-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="offers">
+    <div class="container">
+        <div class="section-title">
+            <h2>Offers & Discounts</h2>
+            <p>
+                Check out our special offers
+            </p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="offer-card offer-one">
+                    <div class="offer-icon">
+                        <i class="bi bi-percent"></i>
+                    </div>
+                    <h3>10% OFF</h3>
+                    <p>
+                        Get 10% discount on selected healthcare
+                        products.
+                    </p>
+                    <strong>
+                        Special Offer
+                    </strong>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="offer-card offer-two">
+                    <div class="offer-icon">
+                        <i class="bi bi-gift"></i>
+                    </div>
+                    <h3>Vitamin Deal</h3>
+                    <p>
+                        Special prices on selected vitamin and
+                        wellness products.
+                    </p>
+                    <strong>
+                        Limited Offer
+                    </strong>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="offer-card offer-three">
+                    <div class="offer-icon">
+                        <i class="bi bi-heart-pulse"></i>
+                    </div>
+                    <h3>Wellness Week</h3>
+                    <p>
+                        Explore special offers on health and
+                        personal care products.
+                    </p>
+                    <strong>
+                        Featured Offer
+                    </strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="services">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Pharmacy Services</h2>
+            <p>
+                Healthcare services available at our pharmacy
+            </p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="service-card">
+                    <i class="bi bi-capsule"></i>
+                    <h5>Medicine Availability</h5>
+                    <p>
+                        Wide range of commonly used medicines
+                        and healthcare products.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="service-card">
+                    <i class="bi bi-heart-pulse"></i>
+                    <h5>Health Products</h5>
+                    <p>
+                        Various wellness, vitamin and personal
+                        care products.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="service-card">
+                    <i class="bi bi-prescription2"></i>
+                    <h5>Prescription Support</h5>
+                    <p>
+                        General information and support for
+                        prescription medicines.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="service-card">
+                    <i class="bi bi-shield-plus"></i>
+                    <h5>Wellness Care</h5>
+                    <p>
+                        Healthcare and wellness products for
+                        everyday needs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="health-tips">
+    <div class="container">
+        <div class="section-title">
+            <h2>Simple Health Tips</h2>
+            <p>Useful everyday wellness reminders</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="tip-card">
+                    <i class="bi bi-droplet"></i>
+                    <h5>Stay Hydrated</h5>
+                    <p>Drink enough water throughout the day and keep yourself hydrated.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="tip-card">
+                    <i class="bi bi-apple"></i>
+                    <h5>Balanced Diet</h5>
+                    <p>Include a variety of nutritious foods as part of a balanced diet.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="tip-card">
+                    <i class="bi bi-moon-stars"></i>
+                    <h5>Good Sleep</h5>
+                    <p>Maintain a regular sleep routine and give your body enough rest.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="tip-card">
+                    <i class="bi bi-person-walking"></i>
+                    <h5>Stay Active</h5>
+                    <p>Regular age-appropriate physical activity can support overall wellness.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Contact & Location</h2>
+            <p>
+                Visit or contact CarePlus Pharmacy
+            </p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="contact-card">
+                    <div class="contact-item">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <div>
+                            <h6>Address</h6>
+                            <p>
+                                Main Market Road, Jamnagar,
+                                Gujarat, India
+                            </p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-telephone-fill"></i>
+                        <div>
+                            <h6>Phone</h6>
+                            <p>
+                                +91 98765 43210
+                            </p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-envelope-fill"></i>
+                        <div>
+                            <h6>Email</h6>
+                            <p>
+                                careplus@example.com
+                            </p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-clock-fill"></i>
+                        <div>
+                            <h6>Opening Hours</h6>
+                            <p>
+                                Monday - Sunday: 9:00 AM - 9:00 PM
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="map-box">
+                    <div>
+                        <i class="bi bi-geo-alt"></i>
+                        <h4>Our Location</h4>
+                        <p>
+                            CarePlus Pharmacy<br>
+                            Jamnagar, Gujarat
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<button id="backToTop" class="back-to-top" type="button" aria-label="Back to top" title="Back to top">
+    <i class="bi bi-arrow-up"></i>
+</button>
+<footer>
+    <div class="container">
+        <p>
+            © 2026 CarePlus Pharmacy. All Rights Reserved.
+        </p>
+        <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+        </div>
+    </div>
+</footer>
+<script>
+    // ---------- DARK / LIGHT MODE ----------
+    const themeToggle = document.getElementById("themeToggle");
+    if (themeToggle) {
+        if (localStorage.getItem("careplusTheme") === "dark") {
+            document.body.classList.add("dark-mode");
+            themeToggle.innerHTML = '<i class="bi bi-sun-fill"></i>';
+        }
+        themeToggle.addEventListener("click", function () {
+            document.body.classList.toggle("dark-mode");
+            if (document.body.classList.contains("dark-mode")) {
+                localStorage.setItem("careplusTheme", "dark");
+                themeToggle.innerHTML = '<i class="bi bi-sun-fill"></i>';
+            } else {
+                localStorage.setItem("careplusTheme", "light");
+                themeToggle.innerHTML = '<i class="bi bi-moon-fill"></i>';
+            }
+        });
+    }
+    // ---------- BACK TO TOP ----------
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 300) {
+            backToTop.style.display = "flex";
+        } else {
+            backToTop.style.display = "none";
+        }
+    });
+    if (backToTop) {
+        backToTop.addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

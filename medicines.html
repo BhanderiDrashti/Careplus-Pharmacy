@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Medicines - CarePlus Pharmacy</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f9fc;
+            color: #333;
+        }
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            padding: 15px 0;
+        }
+        .navbar-brand {
+            color: #087f8c !important;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .navbar-brand i {
+            margin-right: 8px;
+        }
+        .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+            margin-left: 15px;
+        }
+        .nav-link:hover {
+            color: #087f8c !important;
+        }
+        .page-header {
+            background: linear-gradient(120deg, #e5f8fa, #ffffff);
+            padding: 130px 0 60px;
+            text-align: center;
+        }
+        .page-header h1 {
+            color: #075e68;
+            font-weight: bold;
+            font-size: 42px;
+        }
+        .page-header p {
+            color: #666;
+            font-size: 18px;
+        }
+        .category-menu {
+            background-color: white;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+        }
+        .category-menu a {
+            text-decoration: none;
+            color: #087f8c;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+        .category-menu a:hover {
+            color: #075e68;
+        }
+        .medicine-section {
+            padding: 70px 0;
+        }
+        .medicine-section:nth-child(even) {
+            background-color: white;
+        }
+        .section-heading {
+            margin-bottom: 30px;
+        }
+        .section-heading h2 {
+            color: #075e68;
+            font-weight: bold;
+        }
+        .section-heading p {
+            color: #666;
+        }
+        .medicine-table-box {
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+        }
+        .medicine-table {
+            margin-bottom: 0;
+        }
+        .medicine-table thead {
+            background-color: #087f8c;
+            color: white;
+        }
+        .medicine-table th {
+            padding: 15px;
+        }
+        .medicine-table td {
+            padding: 15px;
+            vertical-align: middle;
+        }
+        .medicine-table tbody tr:hover {
+            background-color: #f1fafb;
+        }
+        .medicine-name {
+            font-weight: bold;
+            color: #075e68;
+        }
+        .company-name {
+            color: #555;
+        }
+        .price {
+            font-weight: bold;
+            color: #087f8c;
+        }
+        .available {
+            background-color: #d1f3df;
+            color: #18733a;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .unavailable {
+            background-color: #ffdcdc;
+            color: #b42318;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .category-title-icon {
+            font-size: 45px;
+            color: #087f8c;
+            margin-bottom: 10px;
+        }
+        .back-button {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #087f8c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-top: 20px;
+        }
+        .back-button:hover {
+            background-color: #075e68;
+            color: white;
+        }
+        footer {
+            background-color: #075e68;
+            color: white;
+            text-align: center;
+            padding: 25px 0;
+        }
+        footer p {
+            margin: 0;
+        }
+        @media(max-width: 768px) {
+            .page-header h1 {
+                font-size: 32px;
+            }
+            .category-menu a {
+                display: inline-block;
+                margin: 8px;
+            }
+            .medicine-table-box {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="project.html">
+            <i class="bi bi-capsule"></i>
+            CarePlus Pharmacy
+        </a>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+            class="collapse navbar-collapse"
+            id="navbarMenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="project.html">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="project.html">
+                        About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="medicines.html">
+                        Medicines
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="project.html">
+                        Offers
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="project.html">
+                        Services
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="project.html">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section class="page-header">
+    <div class="container">
+        <h1>
+            Medicine Collection
+        </h1>
+        <p>
+            Explore medicines by category
+        </p>
+        <div class="category-menu">
+            <a href="#paracetamol">
+                <i class="bi bi-capsule"></i>
+                Paracetamol
+            </a>
+            <a href="#vitamins">
+                <i class="bi bi-heart-pulse"></i>
+                Vitamins
+            </a>
+            <a href="#injections">
+                <i class="bi bi-prescription2"></i>
+                Injections
+            </a>
+            <a href="#creams">
+                <i class="bi bi-bandaid"></i>
+                Creams
+            </a>
+        </div>
+        <a href="index.html"
+           class="back-button">
+            <i class="bi bi-arrow-left"></i>
+            Back to Home
+        </a>
+    </div>
+</section>
+<section id="paracetamol"
+         class="medicine-section">
+    <div class="container">
+        <div class="section-heading">
+            <div class="category-title-icon">
+                <i class="bi bi-capsule"></i>
+            </div>
+            <h2>
+                Paracetamol Medicines
+            </h2>
+            <p>
+                Available Paracetamol medicines and their details
+            </p>
+        </div>
+        <div class="medicine-table-box">
+            <table
+                class="table table-bordered medicine-table">
+                <thead>
+                    <tr>
+                        <th>Medicine Name</th>
+                        <th>Company Name</th>
+                        <th>Strength</th>
+                        <th>Price</th>
+                        <th>Availability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="medicine-name">
+                            Paracetamol 500
+                        </td>
+                        <td class="company-name">
+                            Crocin
+                        </td>
+                        <td>
+                            500 mg
+                        </td>
+                        <td class="price">
+                            ₹30
+                        </td>
+                        <td>
+                            <span class="available">
+                                Available
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="medicine-name">
+                            Dolo 650
+                        </td>
+                        <td class="company-name">
+                            Micro Labs
+                        </td>
+                        <td>
+                            650 mg
+                        </td>
+                        <td class="price">
+                            ₹35
+                        </td>
+                        <td>
+                            <span class="available">
+                                Available
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="medicine-name">
+                            Calpol 500
+                        </td>
+                        <td class="company-name">
+                            GSK
+                        </td>
+                        <td>
+                            500 mg
+                        </td>
+                        <td class="price">
+                            ₹28
+                        </td>
+                        <td>
+                            <span class="unavailable">
+                                Unavailable
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="medicine-name">
+                            Pacimol 500
+                        </td>
+                        <td class="company-name">
+                            IPCA
+                        </td>
+                        <td>
+                            500 mg
+                        </td>
+                        <td class="price">
+                            ₹32
+                        </td>
+                        <td>
+                            <span class="available">
+                                Available
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<section id="vitamins"
+         class="medicine-section">
+    <div class="container">
+        <div class="section-heading">
+            <div class="category-title-icon">
+                <i class="bi bi-heart-pulse"></i>
+            </div>
+            <h2>
+                Vitamin Medicines
+            </h2>
+            <p>
+                Available vitamin and nutritional supplements
+            </p>
+        </div>
+        <div class="medicine-table-box">
+            <table
+                class="table table-bordered medicine-table">
+                <thead>
+                    <tr>
+                        <th>Medicine Name</th>
+                        <th>Company Name</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th>Availability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="medicine-name">
+                            Limcee
+                        </td>
+                        <td class="company-name">
+                            Abbott
+                        </td>
+                        <td>
+                            Vitamin C
+                        </td>
+                        <td class="price">
+                            ₹55
+                        </td>
+                        <td>
+                            <span class="available">
+                                Available
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="medicine-name">
+                            Becosules
+                        </td>
+                        <td class="company-name">
+                            Pfizer
+                        </td>
+                        <td>
+                            Multivitamin
+                        </td>
+                        <td class="price">
+                            ₹45
+                        </td>
+                        <td>
+                            <span class="available">
+                                Available
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="medicine-name">
+                            Neurobion Forte
+                        </td>
+                        <td class="company-name">
+                            Procter & Gamble
+                        </td>
+                        <td>
+                            Vitamin B
+                        </td>
+                        <td class="price">
+                            ₹40
+                        </td>
+                        <td>
+                            <span class="unavailable">
+                                Unavailable
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="medicine-name">
+                            Supradyn
+                        </td>
+                        <td class="company-name">
+                            Bayer
+                        </td>
+                        <td>
+                            Multivitamin
+                        </td>
+                        <td class="price">
+                            ₹120
+                        </td>
+                        <td>
+                            <span class="available">
+                                Available
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<section id="injections"
+         class="medicine-section">
+    <div class="container">
+        <div class="section-heading">
+            <div class="category-title-icon">
+                <i class="bi bi-prescription2"></i>
+            </div>
+            <h2>
+                Injection Medicines
+            </h2>
+            <p>
+                Available injection medicines
+            </p>
+        </div>
+        <div class="medicine-table-box">
+            <table
+                class="table table-bordered medicine-table">
+                <thead>
+                    <tr>
+                        <th>Medicine Name</th>
+                        <th>Company Name</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th>Availability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="medicine-name">
+                            Vitamin B12 Injection
+                        </td>
+                        <td class="company-name">
+                            Sun Pharma
+                        </td>
+                        <td>
+                            Vitamin Injection
+                        </td>
+                        <td class="price">
+                            ₹85
+                        </td>
+                        <td>
+                            <span class="available">
+                                Available
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="medicine-name">
+                            Diclofenac Injection
+                        </td>
+                        <td class="company-name">
+                            Novartis
+                        </td>
+                        <td>
+                            Injection
+                        </td>
+                        <td class="price">
+                            ₹60
+                        </td>
+                        <td>
+                            <span class="available">
+                                Available
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="medicine-name">
+                            Ondansetron Injection
+                        </td>
+                        <td class="company-name">
+                            Cipla
+                        </td>
+                        <td>
+                            Injection
+                        </td>
+                        <td class="price">
+                            ₹45
+                        </td>
+                        <td>
+                            <span class="unavailable">
+                                Unavailable
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="medicine-name">
+                            Amikacin Injection
+                        </td>
+                        <td class="company-name">
+                            Zydus
+                        </td>
+                        <td>
+                            Antibiotic Injection
+                        </td>
+                        <td class="price">
+                            ₹75
+                        </td>
+                        <td>
+                            <span class="available">
+                                Available
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<section id="creams"
+         class="medicine-section">
+    <div class="container">
+        <div class="section-heading">
+            <div class="category-title-icon">
+                <i class="bi bi-bandaid"></i>
+            </div>
+            <h2>
+                Cream Medicines
+            </h2>
+            <p>
+                Available healthcare and skin creams
+            </p>
+        </div>
+        <div class="medicine-table-box">
+            <table
+                class="table table-bordered medicine-table">
+                <thead>
+                    <tr>
+                        <th>Medicine Name</th>
+                        <th>Company Name</th>
+                        <th>Pack Size</th>
+                        <th>Price</th>
+                        <th>Availability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="medicine-name">
+                            Soframycin
+                        </td>
+                        <td class="company-name">
+                            Sanofi
+                        </td>
+                        <td>
+                            20 gm
+                        </td>
+                        <td class="price">
+                            ₹75
+                        </td>
+                        <td>
+                            <span class="available">
+                                Available
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="medicine-name">
+                            Betnovate
+                        </td>
+                        <td class="company-name">
+                            GSK
+                        </td>
+                        <td>
+                            20 gm
+                        </td>
+                        <td class="price">
+                            ₹65
+                        </td>
+                        <td>
+                            <span class="available">
+                                Available
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="medicine-name">
+                            Candid Cream
+                        </td>
+                        <td class="company-name">
+                            Glenmark
+                        </td>
+                        <td>
+                            20 gm
+                        </td>
+                        <td class="price">
+                            ₹110
+                        </td>
+                        <td>
+                            <span class="unavailable">
+                                Unavailable
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="medicine-name">
+                            Boroline
+                        </td>
+                        <td class="company-name">
+                            GD Pharmaceuticals
+                        </td>
+                        <td>
+                            20 gm
+                        </td>
+                        <td class="price">
+                            ₹45
+                        </td>
+                        <td>
+                            <span class="available">
+                                Available
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <p>
+            © 2026 CarePlus Pharmacy. All Rights Reserved.
+        </p>
+    </div>
+</footer>
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+</body>
+</html>
